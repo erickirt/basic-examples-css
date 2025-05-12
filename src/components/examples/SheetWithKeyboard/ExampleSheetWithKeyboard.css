@@ -67,6 +67,7 @@
 
 .ExampleSheetWithKeyboard-title {
   /* SELF-LAYOUT */
+  margin: 0;
   justify-self: center;
 
   /* TEXT */
@@ -99,6 +100,10 @@
 }
 
 .ExampleSheetWithKeyboard-scrollView {
+  /* SELF-LAYOUT */
+  min-height: 0;
+
+  /* APPEARANCE */
   background-color: var(--gray-1);
 }
 
@@ -171,6 +176,9 @@
 }
 
 .ExampleSheetWithKeyboard-details {
+  /* SELF-LAYOUT */
+  margin: 0;
+
   /* INNER-LAYOUT */
   padding-inline: var(--padding);
 
@@ -194,6 +202,9 @@
 }
 @container (min-width: 780px) {
   .ExampleSheetWithKeyboard-form {
+    /* SELF-LAYOUT */
+    box-sizing: border-box;
+
     /* INNER-LAYOUT */
     grid-template-columns: 1fr 1fr;
     gap: var(--size-10);
@@ -236,6 +247,7 @@
 
 .ExampleSheetWithKeyboard-labelDescription {
   /* SELF-LAYOUT */
+  margin-top: 0;
   margin-bottom: var(--size-5);
 
   /* TEXT */

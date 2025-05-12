@@ -1,6 +1,7 @@
 .ExampleSheetWithStacking-scrollView {
   /* SELF-LAYOUT */
   grid-area: 1 / 1;
+  min-height: 0;
 
   /* APPEARANCE */
   border-radius: var(--radius-7) var(--radius-7) 0 0;
@@ -198,7 +199,7 @@
   }
 }
 @media (min-width: 724px) and (min-resolution: 2dppx) {
-  .ExampleSheetWithStacking-post {
+  .ExampleSheetWithStacking-post:not(:last-child) {
     /* APPEARANCE */
     border-bottom: 0.5px solid var(--gray-4);
   }

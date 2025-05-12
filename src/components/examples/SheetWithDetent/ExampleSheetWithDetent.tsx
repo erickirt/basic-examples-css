@@ -125,6 +125,7 @@ const ExampleSheetWithDetent = () => {
           </div>
           <Scroll.Root asChild>
             <Scroll.View
+              className="ExampleSheetWithDetent-scrollView"
               scrollGestureTrap={{ yEnd: true }}
               scrollGesture={!reachedLastDetent ? false : "auto"}
               safeArea="layout-viewport"

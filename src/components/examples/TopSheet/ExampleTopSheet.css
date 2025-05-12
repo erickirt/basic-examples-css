@@ -36,6 +36,7 @@
 
 .ExampleTopSheet-title {
   /* SELF-LAYOUT */
+  margin: 0;
   justify-self: center;
   max-width: 400px;
 
@@ -68,6 +69,7 @@
 
 .ExampleTopSheet-description {
   /* SELF-LAYOUT */
+  margin: 0;
   justify-self: center;
   max-width: 500px;
 

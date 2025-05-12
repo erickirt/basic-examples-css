@@ -38,7 +38,7 @@ const ExamplePageFromBottom = () => {
                     </span>
                   </div>
                   <section className="ExamplePageFromBottom-articleBody">
-                    <p>
+                    <p className="ExamplePageFromBottom-articleParagraph">
                       Minimalism in architecture has evolved far beyond a simple
                       design trend. Today, it is a defining philosophy that
                       shapes how we conceive, create, and inhabit our spaces.
@@ -53,7 +53,7 @@ const ExamplePageFromBottom = () => {
                       essentials of living.
                     </p>
 
-                    <p>
+                    <p className="ExamplePageFromBottom-articleParagraph">
                       In its early stages, minimalism was driven by modernist
                       principles, particularly those of the Bauhaus movement,
                       which sought to eliminate ornamentation and focus on
@@ -68,7 +68,7 @@ const ExamplePageFromBottom = () => {
                       a variety of contemporary challenges.
                     </p>
 
-                    <p>
+                    <p className="ExamplePageFromBottom-articleParagraph">
                       One of the key drivers behind the rise of minimalism is
                       the desire for more efficient use of space. As cities
                       become more crowded, space is at a premium, and the need
@@ -82,7 +82,7 @@ const ExamplePageFromBottom = () => {
                       creating a sense of openness and freedom.
                     </p>
 
-                    <p>
+                    <p className="ExamplePageFromBottom-articleParagraph">
                       Incorporating natural light and clean lines is another
                       hallmark of minimalist design. These elements help to
                       create a sense of peace and serenity, which is central to
@@ -96,7 +96,7 @@ const ExamplePageFromBottom = () => {
                       emphasis on sustainability in design and construction.
                     </p>
 
-                    <p>
+                    <p className="ExamplePageFromBottom-articleParagraph">
                       The minimalist approach also encourages mindfulness in how
                       we interact with our surroundings. In a world filled with
                       distractions, minimalist spaces offer a reprieve—an
@@ -109,7 +109,7 @@ const ExamplePageFromBottom = () => {
                       lifestyle.
                     </p>
 
-                    <p>
+                    <p className="ExamplePageFromBottom-articleParagraph">
                       Technology has also played a significant role in the rise
                       of minimalist architecture. The integration of smart home
                       systems, automated lighting, and energy-efficient
@@ -122,7 +122,7 @@ const ExamplePageFromBottom = () => {
                       lifestyle without sacrificing comfort or convenience.
                     </p>
 
-                    <p>
+                    <p className="ExamplePageFromBottom-articleParagraph">
                       Perhaps the most striking element of minimalist
                       architecture is its ability to blur the lines between
                       interior and exterior. By creating open, uninterrupted
@@ -135,7 +135,7 @@ const ExamplePageFromBottom = () => {
                       invite nature into the living environment.
                     </p>
 
-                    <p>
+                    <p className="ExamplePageFromBottom-articleParagraph">
                       Finally, minimalist architecture is not just about visual
                       aesthetics—it is a tool for enhancing the quality of life.
                       The rise of minimalism reflects a growing recognition that

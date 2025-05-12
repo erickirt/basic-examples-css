@@ -1,11 +1,6 @@
 @import "@silk-hq/components/unlayered-styles";
 
 * {
-  margin: 0;
-  box-sizing: border-box;
-  min-width: 0px;
-  min-height: 0px;
-
   -webkit-tap-highlight-color: transparent; /* Removes the grey highlight on clickable elements on iOS */
   -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS */
   -ms-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in IE */

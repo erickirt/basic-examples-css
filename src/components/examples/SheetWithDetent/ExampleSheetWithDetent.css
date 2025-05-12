@@ -55,6 +55,7 @@
   /* SELF-LAYOUT */
   width: 100%;
   height: var(--size-15);
+  box-sizing: border-box;
 
   /* APPEARANCE */
   outline: none;
@@ -74,6 +75,10 @@
 .ExampleSheetWithDetent-input::placeholder {
   /* TEXT */
   color: var(--gray-6);
+}
+
+.ExampleSheetWithDetent-scrollView {
+  min-height: 0;
 }
 
 .ExampleSheetWithDetent-scrollContent {

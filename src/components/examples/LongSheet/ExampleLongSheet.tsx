@@ -39,7 +39,7 @@ const ExampleLongSheet = () => {
               </span>
             </div>
             <section className="ExampleLongSheet-articleBody">
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 In the heart of the vast, golden fields, where the sky met the
                 earth in a tender embrace, stood a solitary house. It was not
                 merely a house, but a sanctuary of memories and echoes of
@@ -50,7 +50,7 @@ const ExampleLongSheet = () => {
                 pace and the world seemed a little kinder.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 The house had been built by the hands of a man named Thomas, a
                 farmer with a heart as vast as the fields he tended. He had
                 poured his soul into every beam and nail, crafting a home that
@@ -60,7 +60,7 @@ const ExampleLongSheet = () => {
                 reflection of the golden sky that stretched endlessly above.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 Inside, the house was a treasure trove of forgotten stories. The
                 walls were adorned with faded photographs, each capturing a
                 moment in time that was now but a distant memory. There were
@@ -70,7 +70,7 @@ const ExampleLongSheet = () => {
                 intertwined with the rhythm of the fields.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 The kitchen, with its old wooden table and cast-iron stove, was
                 the heart of the home. It was here that Martha had prepared
                 countless meals, her hands kneading dough with the same love
@@ -79,7 +79,7 @@ const ExampleLongSheet = () => {
                 reminder of the warmth that had once filled the house.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 Upstairs, the bedrooms were quiet and still, their occupants
                 long since moved on. The beds were neatly made, the quilts
                 hand-stitched by Martha with patterns that told stories of their
@@ -88,7 +88,7 @@ const ExampleLongSheet = () => {
                 nurtured within these walls.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 Outside, the fields stretched as far as the eye could see, a
                 golden sea that whispered secrets to the wind. The wheat rustled
                 softly, its gentle murmur a lullaby that had soothed many a
@@ -97,7 +97,7 @@ const ExampleLongSheet = () => {
                 fleeting and eternal.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 The house had witnessed joy and sorrow, birth and death, and
                 everything in between. It had stood steadfast through storms and
                 droughts, its foundations deeply rooted in the earth. It had
@@ -105,7 +105,7 @@ const ExampleLongSheet = () => {
                 the resilience of the human spirit.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 As the years passed, the house began to show signs of age. The
                 paint peeled, the roof sagged, and the fields around it grew
                 wild and untamed. Yet, despite its wear and tear, the house
@@ -114,7 +114,7 @@ const ExampleLongSheet = () => {
                 them, and they refused to let go.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 One day, a young couple stumbled upon the house while exploring
                 the countryside. They were captivated by its rustic charm and
                 the stories it seemed to whisper. They decided to restore the
@@ -124,7 +124,7 @@ const ExampleLongSheet = () => {
                 and Martha and all who had come before.
               </p>
 
-              <p>
+              <p className="ExampleLongSheet-articleParagraph">
                 And so, the house in the fields stood once more, its walls
                 echoing with new laughter and fresh dreams. The golden sky above
                 watched over it, carrying the forgotten stories on the winds,

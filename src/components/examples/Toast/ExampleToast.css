@@ -27,6 +27,7 @@
 
 .ExampleToast-title {
   /* SELF-LAYOUT */
+  margin: 0;
   grid-column: 2;
 
   /* TEXT */
@@ -39,6 +40,7 @@
 
 .ExampleToast-description {
   /* SELF-LAYOUT */
+  margin: 0;
   grid-column: 2;
 
   /* APPEARANCE */

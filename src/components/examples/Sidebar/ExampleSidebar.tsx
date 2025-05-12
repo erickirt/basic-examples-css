@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Scroll, Sheet } from "@silk-hq/components";
+import React from "react";
+import { Scroll } from "@silk-hq/components";
 import { Sidebar } from "./Sidebar";
 import "./ExampleSidebar.css";
 
@@ -244,24 +244,6 @@ const data = [
       },
     ],
   },
-  // {
-  //    title: "Tasks",
-  //    items: [
-  //       { name: "My Tasks", icon: "my-tasks-icon" },
-  //       { name: "Team Tasks", icon: "team-tasks-icon" },
-  //       { name: "Completed Tasks", icon: "completed-tasks-icon" },
-  //       { name: "Upcoming Tasks", icon: "upcoming-tasks-icon" },
-  //    ],
-  // },
-  // {
-  //    title: "Reports",
-  //    items: [
-  //       { name: "Daily Reports", icon: "daily-reports-icon" },
-  //       { name: "Weekly Reports", icon: "weekly-reports-icon" },
-  //       { name: "Monthly Reports", icon: "monthly-reports-icon" },
-  //       { name: "Custom Reports", icon: "custom-reports-icon" },
-  //    ],
-  // },
   {
     title: "Settings",
     items: [
@@ -475,7 +457,7 @@ const ExampleSidebar = () => {
             <div className="ExampleSidebar-orgEmail">support@acme.com</div>
           </div>
           <Scroll.Root asChild>
-            <Scroll.View>
+            <Scroll.View className="ExampleSidebar-scrollView">
               <Scroll.Content className="ExampleSidebar-scrollContent">
                 {data.map((list: any, index: number) => (
                   <div className="ExampleSidebar-listGroup" key={index}>

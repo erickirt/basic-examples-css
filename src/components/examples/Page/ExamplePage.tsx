@@ -35,7 +35,7 @@ const ExamplePage = () => {
                       </span>
                     </div>
                     <section className="ExamplePage-articleBody">
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         In the realm of sports, every legendary journey begins
                         with a single, often humble, step. Whether it's a child
                         kicking their first soccer ball in the backyard or a
@@ -46,7 +46,7 @@ const ExamplePage = () => {
                         drives individuals to push beyond their limits.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         For many athletes, the spark of passion is ignited in
                         the most unexpected places. It could be a local
                         community center, a school playground, or even a
@@ -57,7 +57,7 @@ const ExamplePage = () => {
                         it to grow into a flame that fuels a lifelong pursuit.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         Take, for example, the story of a young girl named Emma
                         who discovered her love for running during a school
                         sports day. What started as a simple race against her
@@ -68,7 +68,7 @@ const ExamplePage = () => {
                         with her coach, and a relentless drive to improve.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         Emma's story is not unique. Across the globe, countless
                         individuals find their passion in sports through small,
                         incremental steps. A boy picking up a tennis racket for
@@ -79,7 +79,7 @@ const ExamplePage = () => {
                         moments into monumental achievements.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         One of the most inspiring aspects of sports is its
                         inclusivity. Whether you're a natural talent or someone
                         who struggles to keep up, there's a place for everyone.
@@ -91,7 +91,7 @@ const ExamplePage = () => {
                         it.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         For those who dream big, the path to success is often
                         fraught with obstacles. Injuries, financial constraints,
                         and personal struggles can all pose significant
@@ -101,7 +101,7 @@ const ExamplePage = () => {
                         what sets apart the extraordinary from the ordinary.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         The role of mentors and coaches cannot be overstated in
                         the journey of an athlete. These individuals provide
                         guidance, support, and encouragement, helping athletes
@@ -113,7 +113,7 @@ const ExamplePage = () => {
                         athletes serving as a beacon of hope and inspiration.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         As athletes progress in their journey, they often find
                         that their passion for sports extends beyond personal
                         achievement. Many become advocates for their sport,
@@ -125,7 +125,7 @@ const ExamplePage = () => {
                         anyone willing to put in the effort.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         In the end, the journey of an athlete is not just about
                         winning medals or breaking records. It's about the
                         personal growth and self-discovery that comes from
@@ -136,7 +136,7 @@ const ExamplePage = () => {
                         make the journey worthwhile.
                       </p>
 
-                      <p>
+                      <p className="ExamplePage-articleParagraph">
                         So, whether you're a young dreamer just starting out or
                         an experienced athlete looking to take your passion to
                         the next level, remember that every great journey begins

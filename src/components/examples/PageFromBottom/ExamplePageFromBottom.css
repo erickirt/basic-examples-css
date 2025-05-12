@@ -1,4 +1,6 @@
 .ExamplePageFromBottom-scrollView {
+  /* SELF-LAYOUT */
+  min-height: 0;
   height: 100%;
 }
 
@@ -37,6 +39,7 @@
 
 .ExamplePageFromBottom-title {
   /* SELF-LAYOUT */
+  margin-top: 0;
   margin-bottom: var(--size-6);
 
   /* TEXT */
@@ -57,6 +60,9 @@
 }
 
 .ExamplePageFromBottom-subtitle {
+  /* SELF-LAYOUT */
+  margin: 0;
+
   /* TEXT */
   text-wrap: balance;
   text-wrap: pretty;
@@ -109,4 +115,9 @@
     /* SELF-LAYOUT */
     margin-top: var(--size-17);
   }
+}
+
+.ExamplePageFromBottom-articleParagraph {
+  /* SELF-LAYOUT */
+  margin: 0;
 }

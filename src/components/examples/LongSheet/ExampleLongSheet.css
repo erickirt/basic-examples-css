@@ -41,6 +41,7 @@
 
 .ExampleLongSheet-title {
   /* SELF-LAYOUT */
+  margin-top: 0;
   margin-bottom: var(--size-6);
   justify-self: center;
   max-width: 600px;
@@ -64,6 +65,9 @@
 }
 
 .ExampleLongSheet-subtitle {
+  /* SELF-LAYOUT */
+  margin: 0;
+
   /* TEXT */
   text-align: center;
   text-wrap: balance;
@@ -119,4 +123,9 @@
     /* SELF-LAYOUT */
     margin-top: var(--size-17);
   }
+}
+
+.ExampleLongSheet-articleParagraph {
+  /* SELF-LAYOUT */
+  margin: 0;
 }
