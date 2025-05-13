@@ -5,8 +5,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Silk Examples CSS",
-  description: "Native-like swipeable sheets on the web",
+  title: "Silk Examples – CSS",
+  description: "Examples for Silk using CSS for styling",
   other: {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
