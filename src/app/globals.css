@@ -17,18 +17,6 @@ textarea {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-:focus {
-  outline: none;
-}
-:focus-visible {
-  outline: 2px solid black;
-  outline-offset: 2px;
-}
-.platform-ios :focus-visible,
-.platform-ipados :focus-visible {
-  outline: none;
-}
-
 :root {
   font-size: 16px;
 
@@ -168,23 +156,11 @@ textarea {
     rgba(203, 251, 246, 1),
     rgba(83, 243, 224, 1)
   );
-  --blue-scenery-2-gradient: conic-gradient(
-    from -200deg at 50% 50%,
-    rgba(83, 243, 224, 0.8),
-    rgba(203, 251, 246, 1),
-    rgba(83, 243, 224, 0.8)
-  );
-  --blue-illustration-1-gradient: conic-gradient(
+  --blue-illustration-gradient: conic-gradient(
     from -140deg at 100% 100%,
     rgba(36, 239, 215, 1),
     rgba(179, 250, 241, 1) 120deg,
     rgba(36, 239, 215, 1)
-  );
-  --blue-illustration-2-gradient: conic-gradient(
-    from -140deg at 100% 100%,
-    rgba(15, 209, 187, 1),
-    rgba(107, 245, 228, 1) 120deg,
-    rgba(15, 209, 187, 1)
   );
   --red-scenery-gradient: conic-gradient(
     from -200deg at 50% 50%,
@@ -192,23 +168,11 @@ textarea {
     rgba(247, 188, 188, 1),
     rgba(229, 54, 54, 1)
   );
-  --red-scenery-2-gradient: conic-gradient(
-    from -200deg at 50% 50%,
-    rgba(229, 54, 54, 0.75),
-    rgba(247, 188, 188, 1),
-    rgba(229, 54, 54, 0.75)
-  );
-  --red-illustration-1-gradient: conic-gradient(
+  --red-illustration-gradient: conic-gradient(
     from -140deg at 100% 100%,
     rgba(239, 36, 36, 1),
     rgba(250, 179, 179, 1) 120deg,
     rgba(239, 36, 36, 1)
-  );
-  --red-illustration-2-gradient: conic-gradient(
-    from -140deg at 100% 100%,
-    rgba(209, 15, 15, 1),
-    rgba(245, 107, 107, 1) 120deg,
-    rgba(209, 15, 15, 1)
   );
   --green-scenery-gradient: conic-gradient(
     from -200deg at 50% 50%,
@@ -216,22 +180,10 @@ textarea {
     #cbfbdf,
     #53f395
   );
-  --green-scenery-2-gradient: conic-gradient(
-    from -200deg at 50% 50%,
-    rgba(83, 243, 149, 0.8),
-    #cbfbdf,
-    rgba(83, 243, 149, 0.8)
-  );
-  --green-illustration-1-gradient: conic-gradient(
+  --green-illustration-gradient: conic-gradient(
     from -140deg at 100% 100%,
     rgba(36, 239, 87, 1),
     rgba(179, 250, 196, 1) 120deg,
     rgba(36, 239, 87, 1)
-  );
-  --green-illustration-2-gradient: conic-gradient(
-    from -140deg at 100% 100%,
-    rgba(15, 209, 64, 1),
-    rgba(107, 245, 142, 1) 120deg,
-    rgba(15, 209, 64, 1)
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { Fixed, Island } from "@silk-hq/components";
 
 import "./page.css";
 import { ExampleBottomSheet } from "@/components/examples/BottomSheet/ExampleBottomSheet";
@@ -19,27 +18,23 @@ import { ExampleCard } from "@/components/examples/Card/ExampleCard";
 
 export default function Home() {
   return (
-    <React.StrictMode>
-      <body className="Home-root">
-        <main className="Home-main">
-          <ExampleBottomSheet />
-          <ExampleTopSheet />
-          <ExampleDetachedSheet />
-          <ExampleCard />
-          <ExampleSidebar />
-          <ExampleToast />
-          <ExampleSheetWithStacking data={ExampleSheetWithStackingData} />
-          <ExampleSheetWithDetent />
-          <ExampleSheetWithKeyboard />
-          <ExampleLongSheet />
-          <ExamplePage />
-          <ExamplePageFromBottom />
+    <main className="Home-main">
+      <ExampleBottomSheet />
+      <ExampleTopSheet />
+      <ExampleDetachedSheet />
+      <ExampleCard />
+      <ExampleSidebar />
+      <ExampleToast />
+      <ExampleSheetWithStacking data={ExampleSheetWithStackingData} />
+      <ExampleSheetWithDetent />
+      <ExampleSheetWithKeyboard />
+      <ExampleLongSheet />
+      <ExamplePage />
+      <ExamplePageFromBottom />
 
-          <div className="Home-topBar">
-            <div className="Home-topBarContent">Silk</div>
-          </div>
-        </main>
-      </body>
-    </React.StrictMode>
+      <div className="Home-topBar">
+        <div className="Home-topBarContent">Silk</div>
+      </div>
+    </main>
   );
 }

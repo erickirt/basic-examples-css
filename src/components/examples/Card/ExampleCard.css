@@ -30,7 +30,7 @@
   height: 100%;
 
   /* APPEARANCE */
-  background-image: var(--blue-illustration-1-gradient);
+  background-image: var(--blue-illustration-gradient);
   background-origin: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
