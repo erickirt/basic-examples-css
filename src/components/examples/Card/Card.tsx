@@ -1,51 +1,135 @@
 "use client";
-import { Sheet, VisuallyHidden } from "@silk-hq/components";
-import { SheetTriggerCard } from "@/components/app/SheetTriggerCard/SheetTriggerCard";
+import React from "react";
+import { Sheet } from "@silk-hq/components";
+
 import "./Card.css";
 
-import image from "./../../../app/images/thumbnails/Card.png";
+// ============================================================================
+// Root
+// ============================================================================
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
-   presentTrigger: React.ReactNode;
-   sheetContent: React.ReactNode;
-}
-
-const Card = ({ presentTrigger, sheetContent, ...restProps }: Props) => {
-   return (
-      <Sheet.Root license="commercial" {...restProps}>
-         {presentTrigger}
-         <Sheet.Portal>
-            <Sheet.View
-               className="Card-view"
-               contentPlacement="center"
-               tracks="top"
-               enteringAnimationSettings={{
-                  easing: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                  mass: 1,
-               }}
-               nativeEdgeSwipePrevention={true}
-            >
-               <Sheet.Backdrop
-                  className="Card-backdrop"
-                  travelAnimation={{
-                     opacity: ({ progress }) => Math.min(0.4 * progress, 0.4),
-                  }}
-                  themeColorDimming="auto"
-               />
-               <Sheet.Content
-                  className="Card-content"
-                  travelAnimation={{
-                     scale: [0.8, 1],
-                  }}
-               >
-                  {sheetContent}
-               </Sheet.Content>
-            </Sheet.View>
-         </Sheet.Portal>
-      </Sheet.Root>
-   );
+type SheetRootProps = React.ComponentPropsWithoutRef<typeof Sheet.Root>;
+type CardRootProps = Omit<SheetRootProps, "license"> & {
+  license?: SheetRootProps["license"];
 };
 
-export { Card };
+const CardRoot = React.forwardRef<
+  React.ElementRef<typeof Sheet.Root>,
+  CardRootProps
+>((props, ref) => {
+  return <Sheet.Root license="commercial" {...props} ref={ref}></Sheet.Root>;
+});
+CardRoot.displayName = "CardRoot";
+
+// ============================================================================
+// View
+// ============================================================================
+
+const CardView = React.forwardRef<
+  React.ElementRef<typeof Sheet.View>,
+  React.ComponentPropsWithoutRef<typeof Sheet.View>
+>(({ className, ...props }, ref) => {
+  return (
+    <Sheet.View
+      className={`Card-view ${className ?? ""}`.trim()}
+      contentPlacement="center"
+      tracks="top"
+      enteringAnimationSettings={{
+        easing: "spring",
+        stiffness: 260,
+        damping: 20,
+        mass: 1,
+      }}
+      nativeEdgeSwipePrevention={true}
+      {...props}
+      ref={ref}
+    />
+  );
+});
+CardView.displayName = "CardView";
+
+// ============================================================================
+// Backdrop
+// ============================================================================
+
+const CardBackdrop = React.forwardRef<
+  React.ElementRef<typeof Sheet.Backdrop>,
+  React.ComponentPropsWithoutRef<typeof Sheet.Backdrop>
+>(({ className, ...props }, ref) => {
+  return (
+    <Sheet.Backdrop
+      className={`Card-backdrop ${className ?? ""}`.trim()}
+      travelAnimation={{
+        opacity: ({ progress }) => Math.min(0.4 * progress, 0.4),
+      }}
+      themeColorDimming="auto"
+      {...props}
+      ref={ref}
+    />
+  );
+});
+CardBackdrop.displayName = "CardBackdrop";
+
+// ============================================================================
+// Content
+// ============================================================================
+
+const CardContent = React.forwardRef<
+  React.ElementRef<typeof Sheet.Content>,
+  React.ComponentPropsWithoutRef<typeof Sheet.Content>
+>(({ className, ...props }, ref) => {
+  return (
+    <Sheet.Content
+      className={`Card-content ${className ?? ""}`.trim()}
+      travelAnimation={{
+        scale: [0.8, 1],
+      }}
+      {...props}
+      ref={ref}
+    />
+  );
+});
+CardContent.displayName = "CardContent";
+
+// ============================================================================
+// BleedingBackground
+// ============================================================================
+
+const CardBleedingBackground = React.forwardRef<
+  React.ElementRef<typeof Sheet.BleedingBackground>,
+  React.ComponentPropsWithoutRef<typeof Sheet.BleedingBackground>
+>(({ className, ...props }, ref) => {
+  return (
+    <Sheet.BleedingBackground
+      className={`Card-bleedingBackground ${className ?? ""}`.trim()}
+      {...props}
+      ref={ref}
+    />
+  );
+});
+CardBleedingBackground.displayName = "CardBleedingBackground";
+
+// ============================================================================
+// Unchanged Components
+// ============================================================================
+
+const CardPortal = Sheet.Portal;
+const CardTrigger = Sheet.Trigger;
+const CardHandle = Sheet.Handle;
+const CardOutlet = Sheet.Outlet;
+const CardTitle = Sheet.Title;
+const CardDescription = Sheet.Description;
+
+export {
+  CardRoot,
+  CardPortal,
+  CardView,
+  CardBackdrop,
+  CardContent,
+  CardBleedingBackground,
+  CardTrigger,
+  CardHandle,
+  CardOutlet,
+  CardTitle,
+  CardDescription,
+};

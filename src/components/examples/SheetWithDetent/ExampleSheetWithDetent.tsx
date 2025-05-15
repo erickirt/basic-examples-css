@@ -1,14 +1,19 @@
 "use client";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { VisuallyHidden } from "@silk-hq/components";
 import {
-  Sheet,
-  Scroll,
-  VisuallyHidden,
-  useClientMediaQuery,
-} from "@silk-hq/components";
-
-import { SheetWithDetent } from "./SheetWithDetent";
-import { SheetTriggerCard } from "@/components/app/SheetTriggerCard/SheetTriggerCard";
+  SheetWithDetentRoot,
+  SheetWithDetentPortal,
+  SheetWithDetentView,
+  SheetWithDetentBackdrop,
+  SheetWithDetentContent,
+  SheetWithDetentScrollRoot,
+  SheetWithDetentScrollView,
+  SheetWithDetentScrollContent,
+  SheetWithDetentHandle,
+  SheetWithDetentTitle,
+  SheetWithDetentTrigger,
+} from "./SheetWithDetent";
 import "./ExampleSheetWithDetent.css";
 
 const contacts = [
@@ -90,8 +95,7 @@ const contacts = [
 ];
 
 const ExampleSheetWithDetent = () => {
-  //
-  // Contact search
+  const [activeDetent, setActiveDetent] = useState(0);
 
   const [searchText, setSearchText] = useState("");
   const filteredContacts = contacts.filter((contact) =>
@@ -101,61 +105,59 @@ const ExampleSheetWithDetent = () => {
   );
 
   return (
-    <SheetWithDetent
-      presentTrigger={
-        <SheetTriggerCard color="green">Sheet with Detent</SheetTriggerCard>
-      }
-      sheetContent={({ setActiveDetent, reachedLastDetent }) => (
-        <div className="ExampleSheetWithDetent-root">
-          <div className="ExampleSheetWithDetent-header">
-            <Sheet.Handle className="ExampleSheetWithDetent-handle" />
-            <VisuallyHidden.Root asChild>
-              <Sheet.Title className="ExampleSheetWithDetent-title">
-                Sheet with Detent
-              </Sheet.Title>
-            </VisuallyHidden.Root>
-            <input
-              className="ExampleSheetWithDetent-input"
-              type="text"
-              placeholder="Search for a contact"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              onFocus={() => setActiveDetent(2)}
-            />
-          </div>
-          <Scroll.Root asChild>
-            <Scroll.View
-              className="ExampleSheetWithDetent-scrollView"
-              scrollGestureTrap={{ yEnd: true }}
-              scrollGesture={!reachedLastDetent ? false : "auto"}
-              safeArea="layout-viewport"
-              onScrollStart={{
-                dismissKeyboard: true,
-              }}
-            >
-              <Scroll.Content className="ExampleSheetWithDetent-scrollContent">
-                {filteredContacts.map((contact: any) => (
-                  <div
-                    key={contact.id}
-                    className="ExampleSheetWithDetent-contactContainer"
-                  >
-                    <div className="ExampleSheetWithDetent-contactAvatar" />
-                    <div className="ExampleSheetWithDetent-contactDetails">
-                      <div className="ExampleSheetWithDetent-contactFullname">
-                        {contact.username}
+    <SheetWithDetentRoot
+      activeDetent={activeDetent}
+      onActiveDetentChange={setActiveDetent}
+    >
+      <SheetWithDetentTrigger>Sheet with Detent</SheetWithDetentTrigger>
+      <SheetWithDetentPortal>
+        <SheetWithDetentView>
+          <SheetWithDetentBackdrop />
+          <SheetWithDetentContent>
+            <div className="ExampleSheetWithDetent-root">
+              <div className="ExampleSheetWithDetent-header">
+                <SheetWithDetentHandle className="ExampleSheetWithDetent-handle" />
+                <VisuallyHidden.Root asChild>
+                  <SheetWithDetentTitle className="ExampleSheetWithDetent-title">
+                    Sheet with Detent
+                  </SheetWithDetentTitle>
+                </VisuallyHidden.Root>
+                <input
+                  className="ExampleSheetWithDetent-input"
+                  type="text"
+                  placeholder="Search for a contact"
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  onFocus={() => setActiveDetent(2)}
+                />
+              </div>
+              <SheetWithDetentScrollRoot asChild>
+                <SheetWithDetentScrollView>
+                  <SheetWithDetentScrollContent>
+                    {filteredContacts.map((contact) => (
+                      <div
+                        key={contact.id}
+                        className="ExampleSheetWithDetent-contactContainer"
+                      >
+                        <div className="ExampleSheetWithDetent-contactAvatar" />
+                        <div className="ExampleSheetWithDetent-contactDetails">
+                          <div className="ExampleSheetWithDetent-contactFullname">
+                            {contact.username}
+                          </div>
+                          <div className="ExampleSheetWithDetent-contactCompany">
+                            {contact.company}
+                          </div>
+                        </div>
                       </div>
-                      <div className="ExampleSheetWithDetent-contactCompany">
-                        {contact.company}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </Scroll.Content>
-            </Scroll.View>
-          </Scroll.Root>
-        </div>
-      )}
-    />
+                    ))}
+                  </SheetWithDetentScrollContent>
+                </SheetWithDetentScrollView>
+              </SheetWithDetentScrollRoot>
+            </div>
+          </SheetWithDetentContent>
+        </SheetWithDetentView>
+      </SheetWithDetentPortal>
+    </SheetWithDetentRoot>
   );
 };
 

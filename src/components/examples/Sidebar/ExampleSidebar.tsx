@@ -1,6 +1,14 @@
+"use client";
 import React from "react";
 import { Scroll } from "@silk-hq/components";
-import { Sidebar } from "./Sidebar";
+import {
+  SidebarRoot,
+  SidebarPortal,
+  SidebarView,
+  SidebarBackdrop,
+  SidebarContent,
+  SidebarTrigger,
+} from "./Sidebar";
 import "./ExampleSidebar.css";
 
 import { SheetTriggerCard } from "@/components/app/SheetTriggerCard/SheetTriggerCard";
@@ -447,45 +455,47 @@ const data = [
 
 const ExampleSidebar = () => {
   return (
-    <Sidebar
-      presentTrigger={<SheetTriggerCard color="red">Sidebar</SheetTriggerCard>}
-      sheetContent={
-        <div className="ExampleSidebar-root">
-          <div className="ExampleSidebar-header">
-            <div className="ExampleSidebar-illustration" />
-            <div className="ExampleSidebar-orgName">Acme Inc.</div>
-            <div className="ExampleSidebar-orgEmail">support@acme.com</div>
-          </div>
-          <Scroll.Root asChild>
-            <Scroll.View className="ExampleSidebar-scrollView">
-              <Scroll.Content className="ExampleSidebar-scrollContent">
-                {data.map((list: any, index: number) => (
-                  <div className="ExampleSidebar-listGroup" key={index}>
-                    <h3 className="ExampleSidebar-listTitle">{list.title}</h3>
-                    <ul className="ExampleSidebar-list">
-                      {list.items.map(
-                        (item: { name: string; icon: React.ReactNode }) => (
-                          <li className="ExampleSidebar-item" key={item.name}>
-                            <div className="ExampleSidebar-itemIcon">
-                              {item.icon}
-                            </div>
-                            <div className="ExampleSidebar-itemText">
-                              {item.name}
-                            </div>
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  </div>
-                ))}
-              </Scroll.Content>
-            </Scroll.View>
-          </Scroll.Root>
-        </div>
-      }
-    />
+    <SidebarRoot>
+      <SidebarTrigger>Sidebar</SidebarTrigger>
+      <SidebarPortal>
+        <SidebarView>
+          <SidebarBackdrop />
+          <SidebarContent>
+            <div className="ExampleSidebar-root">
+              <div className="ExampleSidebar-header">
+                <div className="ExampleSidebar-illustration" />
+                <div className="ExampleSidebar-orgName">Acme Inc.</div>
+                <div className="ExampleSidebar-orgEmail">support@acme.com</div>
+              </div>
+              <Scroll.Root asChild>
+                <Scroll.View className="ExampleSidebar-scrollView">
+                  <Scroll.Content className="ExampleSidebar-scrollContent">
+                    {data.map((section) => (
+                      <div key={section.title} className="ExampleSidebar-listGroup">
+                        <h3 className="ExampleSidebar-listTitle">{section.title}</h3>
+                        <ul className="ExampleSidebar-list">
+                          {section.items.map((item) => (
+                            <li className="ExampleSidebar-item" key={item.name}>
+                              <div className="ExampleSidebar-itemIcon">
+                                {item.icon}
+                              </div>
+                              <div className="ExampleSidebar-itemText">
+                                {item.name}
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </Scroll.Content>
+                </Scroll.View>
+              </Scroll.Root>
+            </div>
+          </SidebarContent>
+        </SidebarView>
+      </SidebarPortal>
+    </SidebarRoot>
   );
 };
-ExampleSidebar.displayName = "ExampleSidebar";
 
 export { ExampleSidebar };
