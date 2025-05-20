@@ -1,0 +1,119 @@
+.ExampleSheetWithDetent-content {
+  /* INNER-LAYOUT */
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+}
+
+.ExampleSheetWithDetent-header {
+  /* APPEARANCE */
+  border-bottom-style: solid;
+  border-bottom-color: var(--gray-3);
+
+  /* INNER-LAYOUT */
+  border-bottom-width: var(--thickness-1);
+  padding: 0 var(--size-9) var(--size-6);
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  gap: var(--size-6);
+
+  /* TEXT */
+  font-size: 0; /* Fix Webkit bug causing space added when typing */
+}
+
+.ExampleSheetWithDetent-handle {
+  /* SELF-LAYOUT */
+  grid-area: 1 / -1;
+  margin-top: var(--size-4);
+  justify-self: center;
+  align-self: start;
+  width: 50px;
+  height: 6px;
+
+  /* APPEARANCE */
+  border: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--gray-4);
+
+  /* INTERACTIVITY */
+  cursor: pointer;
+}
+
+.ExampleSheetWithDetent-input {
+  /* SELF-LAYOUT */
+  width: 100%;
+  height: var(--size-15);
+  box-sizing: border-box;
+
+  /* APPEARANCE */
+  outline: none;
+  border: none;
+  border-radius: var(--radius-5);
+  background-color: var(--gray-3);
+
+  /* INNER-LAYOUT */
+  padding: 0 var(--size-6);
+
+  /* TEXT */
+  appearance: none;
+  font-size: var(--font-size-4);
+  color: var(--gray-9);
+}
+
+.ExampleSheetWithDetent-input::placeholder {
+  /* TEXT */
+  color: var(--gray-6);
+}
+
+.ExampleSheetWithDetent-scrollView {
+  /* SELF-LAYOUT */
+  min-height: 0;
+}
+
+.ExampleSheetWithDetent-scrollContent {
+  /* INNER-LAYOUT */
+  padding: var(--size-9);
+  display: grid;
+  gap: var(--size-9);
+}
+
+.ExampleSheetWithDetent-contactContainer {
+  /* INNER-LAYOUT */
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: var(--size-7);
+}
+
+.ExampleSheetWithDetent-contactAvatar {
+  /* SELF-LAYOUT */
+  width: var(--size-17);
+  height: var(--size-17);
+
+  /* APPEARANCE */
+  border-radius: var(--radius-full);
+  background-image: var(--blue-illustration-gradient);
+  background-origin: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ExampleSheetWithDetent-contactDetails {
+  /* INNER-LAYOUT */
+  display: grid;
+  gap: var(--size-1);
+}
+
+.ExampleSheetWithDetent-contactFullname {
+  /* SELF-LAYOUT */
+  align-self: end;
+
+  /* TEXT */
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-6);
+  color: var(--gray-9);
+}
+
+.ExampleSheetWithDetent-contactCompany {
+  /* TEXT */
+  font-size: var(--font-size-3);
+  color: var(--gray-6);
+}

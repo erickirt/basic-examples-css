@@ -1,0 +1,18 @@
+.Card-view {
+  --card-radius: var(--radius-8);
+
+  /* SELF-LAYOUT */
+  z-index: 1;
+}
+
+.Card-content {
+  /* SELF-LAYOUT */
+  box-sizing: border-box;
+  width: min(600px, calc(100% - 2 * var(--size-8)));
+  height: auto;
+
+  /* APPEARANCE */
+  box-shadow: var(--shadow-4);
+  border-radius: var(--card-radius);
+  background-color: white;
+}

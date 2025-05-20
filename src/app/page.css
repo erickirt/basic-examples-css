@@ -1,9 +1,14 @@
 .Home-main {
   --topBar-height: 49px;
 
+  min-height: 100lvh;
+
   /* INNER-LAYOUT */
   padding: var(--size-10);
-  padding-top: calc(var(--topBar-height) + var(--size-10));
+  padding-top: calc(
+    env(safe-area-inset-top) + var(--topBar-height) + var(--size-10)
+  );
+  padding-bottom: max(env(safe-area-inset-bottom), var(--size-10));
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   place-items: center;

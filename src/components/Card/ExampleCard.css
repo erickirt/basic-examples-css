@@ -1,0 +1,144 @@
+.ExampleCard-content {
+  /* SELF-LAYOUT */
+  height: auto;
+  max-width: 580px;
+  aspect-ratio: 8 / 10;
+
+  /* INNER-LAYOUT */
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  align-items: stretch;
+}
+@media (min-width: 550px) {
+  .ExampleCard-content {
+    /* SELF-LAYOUT */
+    aspect-ratio: 9 / 10;
+  }
+}
+
+.ExampleCard-dismissTrigger {
+  /* SELF-LAYOUT */
+  position: absolute;
+  z-index: 1;
+  justify-self: end;
+  top: var(--size-8);
+  right: var(--size-8);
+  width: 32px;
+  height: 32px;
+
+  /* APPEARANCE */
+  appearance: none;
+  border: none;
+  border-radius: var(--radius-full);
+  background-color: var(--gray-3);
+
+  /* INTERACTIVITY */
+  cursor: pointer;
+
+  /* INNER-LAYOUT */
+  padding: 0;
+  display: grid;
+  place-items: center;
+
+  /* TEXT */
+  color: var(--gray-6);
+}
+
+.ExampleCard-dismissIcon {
+  /* SELF-LAYOUT */
+  width: 22px;
+  height: 22px;
+
+  /* APPEARANCE */
+  stroke-width: 2.5px;
+}
+
+.ExampleCard-illustration {
+  /* SELF-LAYOUT */
+  width: 100%;
+  height: 100%;
+
+  /* APPEARANCE */
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  background-image: var(--blue-illustration-gradient);
+  background-origin: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ExampleCard-information {
+  /* SELF-LAYOUT */
+  max-width: min(90%, 500px);
+
+  /* INNER-LAYOUT */
+  padding: var(--size-12) var(--size-10);
+  display: grid;
+  gap: var(--size-10);
+  justify-items: center;
+  align-content: center;
+}
+
+.ExampleCard-title {
+  /* SELF-LAYOUT */
+  margin: 0;
+  justify-self: center;
+
+  /* TEXT */
+  text-align: center;
+  text-wrap: balance;
+  line-height: var(--line-height-2);
+  font-size: var(--font-size-7);
+  font-weight: var(--font-weight-8);
+  color: var(--gray-9);
+}
+@media (min-width: 600px) {
+  .ExampleCard-title {
+    /* TEXT */
+    font-size: var(--font-size-8);
+  }
+}
+
+.ExampleCard-description {
+  /* SELF-LAYOUT */
+  margin: 0;
+  justify-self: center;
+
+  /* TEXT */
+  text-align: center;
+  text-wrap: balance;
+  text-wrap: pretty;
+  line-height: var(--line-height-4);
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-5);
+  color: var(--gray-6);
+}
+@media (min-width: 600px) {
+  .ExampleCard-description {
+    /* TEXT */
+    font-size: var(--font-size-5);
+  }
+}
+
+.ExampleCard-validateTrigger {
+  /* SELF-LAYOUT */
+  margin-top: var(--size-4);
+  height: var(--size-17);
+
+  /* APPEARANCE */
+  border-radius: var(--radius-full);
+  appearance: none;
+  border: none;
+  background-color: var(--gray-9);
+
+  /* INTERACTIVITY */
+  cursor: pointer;
+
+  /* INNER-LAYOUT */
+  padding-inline: var(--size-14);
+
+  /* TEXT */
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-6);
+  color: var(--white);
+}
