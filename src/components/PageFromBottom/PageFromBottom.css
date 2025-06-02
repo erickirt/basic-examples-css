@@ -1,10 +1,10 @@
 .PageFromBottom-view {
   /* SELF-LAYOUT */
   z-index: 1;
-  /* Adding 60px to make it fully visible below iOS Safari's
-    bottom UI */
+  /* Adding 60px to make it fully visible below iOS Safari's bottom UI */
   height: calc(var(--silk-100-lvh-dvh-pct) + 60px);
-  top: env(safe-area-inset-top, 0px);
+  /* Subtracting 1px to avoid sub-pixel misalignment */
+  top: calc(env(safe-area-inset-top, 0px) - 1px);
   bottom: initial;
 }
 
@@ -16,7 +16,7 @@
 
   /* APPEARANCE */
   background-color: white;
-  box-shadow: var(--shadow-4);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   /* INNER-LAYOUT */
   display: grid;
@@ -27,16 +27,16 @@
   /* SELF-LAYOUT */
   box-sizing: border-box;
   width: 100%;
-  height: var(--size-16);
+  height: 3rem;
 
   /* APPEARANCE */
   border-bottom-style: solid;
-  border-bottom-color: var(--gray-2);
-  background-color: var(--white);
+  border-bottom-color: rgb(243, 244, 246);
+  background-color: #fff;
 
   /* INNER-LAYOUT */
   border-bottom-width: 1px;
-  padding-inline: var(--size-8);
+  padding-inline: 1rem;
   display: grid;
 }
 
@@ -46,17 +46,20 @@
   align-self: center;
 
   /* APPEARANCE */
-  border-radius: var(--radius-3);
+  border-radius: 6px;
   outline-offset: 8px;
   border: none;
   appearance: none;
   background-color: transparent;
 
+  /* INTERACTIVITY */
+  cursor: pointer;
+
   /* INNER-LAYOUT */
   padding: 0;
 
   /* TEXT */
-  font-size: var(--font-size-4);
-  font-weight: var(--font-weight-6);
-  color: var(--gray-9);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgb(31, 41, 55);
 }

@@ -11,30 +11,29 @@ import { ExampleTopSheet } from "@/components/TopSheet/ExampleTopSheet";
 import { ExampleLongSheet } from "@/components/LongSheet/ExampleLongSheet";
 import { ExamplePage } from "@/components/Page/ExamplePage";
 import { ExamplePageFromBottom } from "@/components/PageFromBottom/ExamplePageFromBottom";
-import { ExampleSheetWithStackingData } from "@/components/SheetWithStacking/ExampleSheetWithStackingData";
 import { ExampleSheetWithStacking } from "@/components/SheetWithStacking/ExampleSheetWithStacking";
 import { ExampleSidebar } from "@/components/Sidebar/ExampleSidebar";
 import { ExampleCard } from "@/components/Card/ExampleCard";
 
 export default function Home() {
-   return (
-      <main className="Home-main">
-         <ExampleBottomSheet />
-         <ExampleTopSheet />
-         <ExampleDetachedSheet />
-         <ExampleCard />
-         <ExampleSidebar />
-         <ExampleToast />
-         <ExampleSheetWithStacking data={ExampleSheetWithStackingData} />
-         <ExampleSheetWithDetent />
-         <ExampleSheetWithKeyboard />
-         <ExampleLongSheet />
-         <ExamplePage />
-         <ExamplePageFromBottom />
+  return (
+    <main className="Home-main">
+      <ExampleBottomSheet />
+      <ExampleTopSheet />
+      <ExampleDetachedSheet />
+      <ExampleCard />
+      <ExampleSidebar />
+      <ExampleToast />
+      <ExampleSheetWithStacking />
+      <ExampleSheetWithDetent />
+      <ExampleSheetWithKeyboard />
+      <ExampleLongSheet />
+      <ExamplePage />
+      <ExamplePageFromBottom />
 
-         <div className="Home-topBar">
-            <div className="Home-topBarContent">Silk</div>
-         </div>
-      </main>
-   );
+      <div className="Home-topBar">
+        <div className="Home-topBarContent">Silk</div>
+      </div>
+    </main>
+  );
 }

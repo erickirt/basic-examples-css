@@ -1,18 +1,11 @@
 "use client";
-import React, {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  createContext,
-  useContext,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState, createContext, useContext } from "react";
 import { Sheet, Scroll } from "@silk-hq/components";
 import "./LongSheet.css";
 
-// ============================================================================
+// ================================================================================================
 // Context
-// ============================================================================
+// ================================================================================================
 
 type LongSheetContextType = {
   setTrack: (track: "top" | "bottom") => void;
@@ -21,31 +14,34 @@ type LongSheetContextType = {
 
 const LongSheetContext = createContext<LongSheetContextType | null>(null);
 
-// ============================================================================
+// ================================================================================================
 // Root
-// ============================================================================
+// ================================================================================================
 
 type SheetRootProps = React.ComponentPropsWithoutRef<typeof Sheet.Root>;
 type LongSheetRootProps = Omit<SheetRootProps, "license"> & {
   license?: SheetRootProps["license"];
 };
 
-const LongSheetRoot = React.forwardRef<
-  React.ElementRef<typeof Sheet.Root>,
-  LongSheetRootProps
->((props, ref) => {
-  return <Sheet.Root license="commercial" {...props} ref={ref}></Sheet.Root>;
-});
-LongSheetRoot.displayName = "LongSheetRoot";
+const LongSheetRoot = React.forwardRef<React.ElementRef<typeof Sheet.Root>, LongSheetRootProps>(
+  ({ children, ...restProps }, ref) => {
+    return (
+      <Sheet.Root license="commercial" {...restProps} ref={ref}>
+        {children}
+      </Sheet.Root>
+    );
+  }
+);
+LongSheetRoot.displayName = "LongSheet.Root";
 
-// ============================================================================
+// ================================================================================================
 // View
-// ============================================================================
+// ================================================================================================
 
 const LongSheetView = React.forwardRef<
   React.ElementRef<typeof Sheet.View>,
   React.ComponentPropsWithoutRef<typeof Sheet.View>
->(({ className, children, ...props }, ref) => {
+>(({ children, className, onTravelStatusChange, ...restProps }, ref) => {
   const [restingOutside, setRestingOutside] = useState(false);
   const [track, setTrack] = useState<"top" | "bottom">("bottom");
 
@@ -69,10 +65,11 @@ const LongSheetView = React.forwardRef<
           damping: 45,
           mass: 1.5,
         }}
-        onTravelStatusChange={(status) =>
-          setRestingOutside(status === "idleOutside")
-        }
-        {...props}
+        onTravelStatusChange={(status) => {
+          setRestingOutside(status === "idleOutside");
+          onTravelStatusChange?.(status);
+        }}
+        {...restProps}
         ref={ref}
       >
         {children}
@@ -80,41 +77,39 @@ const LongSheetView = React.forwardRef<
     </LongSheetContext.Provider>
   );
 });
-LongSheetView.displayName = "LongSheetView";
+LongSheetView.displayName = "LongSheet.View";
 
-// ============================================================================
+// ================================================================================================
 // Backdrop
-// ============================================================================
+// ================================================================================================
 
 const LongSheetBackdrop = React.forwardRef<
   React.ElementRef<typeof Sheet.Backdrop>,
   React.ComponentPropsWithoutRef<typeof Sheet.Backdrop>
->(({ className, ...props }, ref) => {
+>(({ className, ...restProps }, ref) => {
   return (
     <Sheet.Backdrop
       className={`LongSheet-backdrop ${className ?? ""}`.trim()}
       themeColorDimming="auto"
-      {...props}
+      {...restProps}
       ref={ref}
     />
   );
 });
-LongSheetBackdrop.displayName = "LongSheetBackdrop";
+LongSheetBackdrop.displayName = "LongSheet.Backdrop";
 
-// ============================================================================
+// ================================================================================================
 // Content
-// ============================================================================
+// ================================================================================================
 
 const LongSheetContent = React.forwardRef<
   React.ElementRef<typeof Sheet.Content>,
   React.ComponentPropsWithoutRef<typeof Sheet.Content>
->(({ className, children, ...props }, ref) => {
+>(({ children, className, ...restProps }, ref) => {
   const scrollRef = useRef<any>(null);
   const context = useContext(LongSheetContext);
   if (!context) {
-    throw new Error(
-      "LongSheetContent must be used within a LongSheetContext.Provider"
-    );
+    throw new Error("LongSheetContent must be used within a LongSheetContext.Provider");
   }
   const { setTrack, restingOutside } = context;
 
@@ -130,14 +125,10 @@ const LongSheetContent = React.forwardRef<
     <Sheet.Content
       className={`LongSheet-content ${className ?? ""}`.trim()}
       asChild
-      {...props}
+      {...restProps}
       ref={ref}
     >
-      <Scroll.Root
-        className="LongSheet-scrollRoot"
-        componentRef={scrollRef}
-        asChild
-      >
+      <Scroll.Root className="LongSheet-scrollRoot" componentRef={scrollRef} asChild>
         <Scroll.View className="LongSheet-scrollView" onScroll={scrollHandler}>
           <Scroll.Content className="LongSheet-scrollContent">
             <div className="LongSheet-innerContent">{children}</div>
@@ -147,11 +138,11 @@ const LongSheetContent = React.forwardRef<
     </Sheet.Content>
   );
 });
-LongSheetContent.displayName = "LongSheetContent";
+LongSheetContent.displayName = "LongSheet.Content";
 
-// ============================================================================
+// ================================================================================================
 // Unchanged Components
-// ============================================================================
+// ================================================================================================
 
 const LongSheetPortal = Sheet.Portal;
 const LongSheetTrigger = Sheet.Trigger;
@@ -160,15 +151,15 @@ const LongSheetOutlet = Sheet.Outlet;
 const LongSheetTitle = Sheet.Title;
 const LongSheetDescription = Sheet.Description;
 
-export {
-  LongSheetRoot,
-  LongSheetPortal,
-  LongSheetView,
-  LongSheetBackdrop,
-  LongSheetContent,
-  LongSheetTrigger,
-  LongSheetHandle,
-  LongSheetOutlet,
-  LongSheetTitle,
-  LongSheetDescription,
+export const LongSheet = {
+  Root: LongSheetRoot,
+  Portal: LongSheetPortal,
+  View: LongSheetView,
+  Backdrop: LongSheetBackdrop,
+  Content: LongSheetContent,
+  Trigger: LongSheetTrigger,
+  Handle: LongSheetHandle,
+  Outlet: LongSheetOutlet,
+  Title: LongSheetTitle,
+  Description: LongSheetDescription,
 };

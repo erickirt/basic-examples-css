@@ -1,5 +1,5 @@
 .SheetWithKeyboard-view {
-  --sheetWithKeyboard-radius: var(--radius-7);
+  --sheetWithKeyboard-radius: 24px;
 
   /* SELF-LAYOUT */
   z-index: 1;
@@ -23,8 +23,7 @@
   height: calc(100% - max(env(safe-area-inset-top), 6px));
 
   /* APPEARANCE */
-  border-radius: var(--sheetWithKeyboard-radius) var(--sheetWithKeyboard-radius)
-    0 0;
+  border-radius: var(--sheetWithKeyboard-radius) var(--sheetWithKeyboard-radius) 0 0;
   overflow: clip;
   overflow: hidden;
   background-color: white;
@@ -32,11 +31,11 @@
 @media (min-width: 800px) {
   .SheetWithKeyboard-content {
     /* SELF-LAYOUT */
-    width: calc(800px - var(--size-9));
-    height: calc(100% - var(--size-12) * 2);
+    width: calc(800px - 1.25rem);
+    height: calc(100% - 2rem * 2);
 
     /* APPEARANCE */
-    box-shadow: var(--shadow-4);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     border-radius: var(--sheetWithKeyboard-radius);
   }
 }

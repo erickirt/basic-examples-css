@@ -1,5 +1,29 @@
+.ExampleSidebar-presentTrigger {
+  /* SELF-LAYOUT */
+  height: 2.75rem;
+
+  /* APPEARANCE */
+  border-radius: 9999px;
+  appearance: none;
+  border: none;
+  background-color: rgb(31, 41, 55);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* INTERACTIVITY */
+  cursor: pointer;
+
+  /* INNER-LAYOUT */
+  padding-inline: 1.25rem;
+
+  /* TEXT */
+  text-box: trim-both cap alphabetic;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+}
+
 .ExampleSidebar-content {
-  --padding: var(--size-10);
+  --padding: 1.5rem;
 
   /* SELF-LAYOUT */
   min-height: 0;
@@ -14,18 +38,17 @@
 
 .ExampleSidebar-header {
   /* APPEARANCE */
-  background-color: var(--neutral-2);
-  border-top: var(--thickness-1) solid var(--neutral-4);
-  border-bottom: var(--thickness-1) solid var(--neutral-4);
+  background-color: rgb(245, 245, 245);
+  border-top: 1px solid rgb(212, 212, 212);
+  border-bottom: 1px solid rgb(212, 212, 212);
 
   /* INNER-LAYOUT */
   padding-inline: var(--padding);
-  padding-block: calc(env(safe-area-inset-top, 0px) + var(--padding))
-    var(--padding);
+  padding-block: calc(env(safe-area-inset-top, 0px) + var(--padding)) var(--padding);
   display: grid;
   grid-template-columns: 50px 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: var(--size-1) var(--size-6);
+  gap: 0.125rem 0.75rem;
 }
 
 .ExampleSidebar-illustration {
@@ -35,23 +58,28 @@
   height: 50px;
 
   /* APPEARANCE */
-  border-radius: var(--radius-5);
-  background-image: var(--blue-illustration-gradient);
+  border-radius: 12px;
+  background-image: conic-gradient(
+    from -140deg at 100% 100%,
+    rgba(36, 239, 215, 1),
+    rgba(179, 250, 241, 1) 120deg,
+    rgba(36, 239, 215, 1)
+  );
   background-origin: border-box;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .ExampleSidebar-orgName {
   /* TEXT */
-  font-size: var(--font-size-5);
-  font-weight: var(--font-weight-7);
-  color: var(--gray-9);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(31, 41, 55);
 }
 
 .ExampleSidebar-orgEmail {
   /* TEXT */
-  font-size: var(--font-size-2);
-  color: var(--gray-6);
+  font-size: 0.875rem;
+  color: rgb(107, 114, 128);
 }
 
 .ExampleSidebar-scrollView {
@@ -61,15 +89,14 @@
 
 .ExampleSidebar-scrollContent {
   /* INNER-LAYOUT */
-  padding: var(--padding) var(--padding)
-    calc(env(safe-area-inset-top, 0px) + var(--padding));
+  padding: var(--padding) var(--padding) calc(env(safe-area-inset-top, 0px) + var(--padding));
   display: grid;
-  gap: var(--size-14);
+  gap: 2.5rem;
 }
 
 .ExampleSidebar-listGroup {
   display: grid;
-  gap: var(--size-10);
+  gap: 1.5rem;
 }
 
 .ExampleSidebar-listTitle {
@@ -77,10 +104,10 @@
   margin: 0;
 
   /* TEXT */
-  font-size: var(--font-size-2);
-  font-weight: var(--font-weight-6);
+  font-size: 0.875rem;
+  font-weight: 600;
   text-transform: uppercase;
-  color: var(--gray-5);
+  color: rgb(156, 163, 175);
 }
 
 .ExampleSidebar-list {
@@ -90,7 +117,7 @@
   /* INNER-LAYOUT */
   padding: 0;
   display: grid;
-  gap: var(--size-9);
+  gap: 1.25rem;
 }
 
 .ExampleSidebar-item {
@@ -101,10 +128,10 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: var(--size-6);
+  gap: 0.75rem;
 
   /* TEXT */
-  color: var(--gray-8);
+  color: rgb(55, 65, 81);
 }
 
 .ExampleSidebar-itemIcon {
@@ -114,6 +141,6 @@
 
 .ExampleSidebar-itemText {
   /* TEXT */
-  font-size: var(--font-size-4);
-  font-weight: var(--font-weight-5);
+  font-size: 1.125rem;
+  font-weight: 500;
 }

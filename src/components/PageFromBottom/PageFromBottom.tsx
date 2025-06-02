@@ -3,9 +3,9 @@ import React from "react";
 import { Sheet } from "@silk-hq/components";
 import "./PageFromBottom.css";
 
-// ============================================================================
+// ================================================================================================
 // Root
-// ============================================================================
+// ================================================================================================
 
 type SheetRootProps = React.ComponentPropsWithoutRef<typeof Sheet.Root>;
 type PageFromBottomRootProps = Omit<SheetRootProps, "license"> & {
@@ -18,67 +18,66 @@ const PageFromBottomRoot = React.forwardRef<
 >((props, ref) => {
   return <Sheet.Root license="commercial" {...props} ref={ref}></Sheet.Root>;
 });
-PageFromBottomRoot.displayName = "PageFromBottomRoot";
+PageFromBottomRoot.displayName = "PageFromBottom.Root";
 
-// ============================================================================
+// ================================================================================================
 // View
-// ============================================================================
+// ================================================================================================
 
 const PageFromBottomView = React.forwardRef<
   React.ElementRef<typeof Sheet.View>,
   React.ComponentPropsWithoutRef<typeof Sheet.View>
->(({ className, ...props }, ref) => {
+>(({ children, className, ...restProps }, ref) => {
   return (
     <Sheet.View
       className={`PageFromBottom-view ${className ?? ""}`.trim()}
       contentPlacement="bottom"
       swipe={false}
       nativeEdgeSwipePrevention={true}
-      {...props}
+      {...restProps}
       ref={ref}
-    />
+    >
+      {children}
+    </Sheet.View>
   );
 });
-PageFromBottomView.displayName = "PageFromBottomView";
+PageFromBottomView.displayName = "PageFromBottom.View";
 
-// ============================================================================
+// ================================================================================================
 // Backdrop
-// ============================================================================
+// ================================================================================================
 
 const PageFromBottomBackdrop = React.forwardRef<
   React.ElementRef<typeof Sheet.Backdrop>,
   React.ComponentPropsWithoutRef<typeof Sheet.Backdrop>
->(({ className, ...props }, ref) => {
+>(({ className, ...restProps }, ref) => {
   return (
     <Sheet.Backdrop
       className={`PageFromBottom-backdrop ${className ?? ""}`.trim()}
       travelAnimation={{ opacity: [0, 0.1] }}
-      {...props}
+      {...restProps}
       ref={ref}
     />
   );
 });
-PageFromBottomBackdrop.displayName = "PageFromBottomBackdrop";
+PageFromBottomBackdrop.displayName = "PageFromBottom.Backdrop";
 
-// ============================================================================
+// ================================================================================================
 // Content
-// ============================================================================
+// ================================================================================================
 
 const PageFromBottomContent = React.forwardRef<
   React.ElementRef<typeof Sheet.Content>,
   React.ComponentPropsWithoutRef<typeof Sheet.Content>
->(({ className, children, ...props }, ref) => {
+>(({ children, className, ...restProps }, ref) => {
   return (
     <Sheet.Content
       className={`PageFromBottom-content ${className ?? ""}`.trim()}
-      {...props}
+      {...restProps}
       ref={ref}
     >
       <div className="PageFromBottom-topBar">
-        <Sheet.Trigger
-          className="PageFromBottom-dismissTrigger"
-          action="dismiss"
-        >
+        <Sheet.Trigger className="PageFromBottom-dismissTrigger" action="dismiss">
           Close
         </Sheet.Trigger>
       </div>
@@ -86,11 +85,11 @@ const PageFromBottomContent = React.forwardRef<
     </Sheet.Content>
   );
 });
-PageFromBottomContent.displayName = "PageFromBottomContent";
+PageFromBottomContent.displayName = "PageFromBottom.Content";
 
-// ============================================================================
+// ================================================================================================
 // Unchanged Components
-// ============================================================================
+// ================================================================================================
 
 const PageFromBottomPortal = Sheet.Portal;
 const PageFromBottomTrigger = Sheet.Trigger;
@@ -99,15 +98,15 @@ const PageFromBottomOutlet = Sheet.Outlet;
 const PageFromBottomTitle = Sheet.Title;
 const PageFromBottomDescription = Sheet.Description;
 
-export {
-  PageFromBottomRoot,
-  PageFromBottomPortal,
-  PageFromBottomView,
-  PageFromBottomBackdrop,
-  PageFromBottomContent,
-  PageFromBottomTrigger,
-  PageFromBottomHandle,
-  PageFromBottomOutlet,
-  PageFromBottomTitle,
-  PageFromBottomDescription,
+export const PageFromBottom = {
+  Root: PageFromBottomRoot,
+  Portal: PageFromBottomPortal,
+  View: PageFromBottomView,
+  Backdrop: PageFromBottomBackdrop,
+  Content: PageFromBottomContent,
+  Trigger: PageFromBottomTrigger,
+  Handle: PageFromBottomHandle,
+  Outlet: PageFromBottomOutlet,
+  Title: PageFromBottomTitle,
+  Description: PageFromBottomDescription,
 };

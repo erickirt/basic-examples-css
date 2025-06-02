@@ -1,15 +1,11 @@
 "use client";
 import React, { useRef, useCallback } from "react";
-import {
-  Sheet,
-  useClientMediaQuery,
-  type SheetViewProps,
-} from "@silk-hq/components";
+import { Sheet, useClientMediaQuery, type SheetViewProps } from "@silk-hq/components";
 import "./SheetWithKeyboard.css";
 
-// ============================================================================
+// ================================================================================================
 // Root
-// ============================================================================
+// ================================================================================================
 
 type SheetRootProps = React.ComponentPropsWithoutRef<typeof Sheet.Root>;
 type SheetWithKeyboardRootProps = Omit<SheetRootProps, "license"> & {
@@ -19,37 +15,59 @@ type SheetWithKeyboardRootProps = Omit<SheetRootProps, "license"> & {
 const SheetWithKeyboardRoot = React.forwardRef<
   React.ElementRef<typeof Sheet.Root>,
   SheetWithKeyboardRootProps
->((props, ref) => {
-  return <Sheet.Root license="commercial" {...props} ref={ref}></Sheet.Root>;
+>(({ children, ...restProps }, ref) => {
+  return (
+    <Sheet.Root license="commercial" {...restProps} ref={ref}>
+      {children}
+    </Sheet.Root>
+  );
 });
-SheetWithKeyboardRoot.displayName = "SheetWithKeyboardRoot";
+SheetWithKeyboardRoot.displayName = "SheetWithKeyboard.Root";
 
-// ============================================================================
+// ================================================================================================
 // View
-// ============================================================================
+// ================================================================================================
 
 const SheetWithKeyboardView = React.forwardRef<
   React.ElementRef<typeof Sheet.View>,
   React.ComponentPropsWithoutRef<typeof Sheet.View>
->(({ className, ...props }, ref) => {
+>(({ children, className, onTravel, ...restProps }, ref) => {
   const viewRef = useRef<HTMLElement>(null);
   const largeViewport = useClientMediaQuery("(min-width: 800px)");
   const contentPlacement = largeViewport ? "center" : "bottom";
-  const tracks: SheetViewProps["tracks"] = largeViewport
-    ? ["top", "bottom"]
-    : "bottom";
+  const tracks: SheetViewProps["tracks"] = largeViewport ? ["top", "bottom"] : "bottom";
 
-  const travelHandler = useCallback<
-    Exclude<SheetViewProps["onTravel"], undefined>
-  >(({ progress }) => {
-    if (!viewRef.current) return;
+  //
 
-    // Dismiss the on-screen keyboard as soon as travel
-    // occurs by focusing the view element.
-    if (progress < 0.999) {
-      viewRef.current.focus();
-    }
-  }, []);
+  const travelHandler = useCallback<NonNullable<SheetViewProps["onTravel"]>>(
+    ({ progress, ...rest }) => {
+      if (!viewRef.current) return onTravel?.({ progress, ...rest });
+
+      // Dismiss the on-screen keyboard as soon as travel
+      // occurs by focusing the view element.
+      if (progress < 0.999) {
+        viewRef.current.focus();
+      }
+      onTravel?.({ progress, ...rest });
+    },
+    [onTravel]
+  );
+
+  //
+
+  const setRefs = useCallback(
+    (node: HTMLElement | null) => {
+      // @ts-ignore - intentionally breaking the readonly nature for compatibility
+      viewRef.current = node;
+
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    },
+    [ref]
+  );
 
   return (
     <Sheet.View
@@ -59,55 +77,57 @@ const SheetWithKeyboardView = React.forwardRef<
       swipeOvershoot={false}
       nativeEdgeSwipePrevention={true}
       onTravel={travelHandler}
-      ref={viewRef}
-      {...props}
-    />
+      ref={setRefs}
+      {...restProps}
+    >
+      {children}
+    </Sheet.View>
   );
 });
-SheetWithKeyboardView.displayName = "SheetWithKeyboardView";
+SheetWithKeyboardView.displayName = "SheetWithKeyboard.View";
 
-// ============================================================================
+// ================================================================================================
 // Backdrop
-// ============================================================================
+// ================================================================================================
 
 const SheetWithKeyboardBackdrop = React.forwardRef<
   React.ElementRef<typeof Sheet.Backdrop>,
   React.ComponentPropsWithoutRef<typeof Sheet.Backdrop>
->(({ className, ...props }, ref) => {
+>(({ className, ...restProps }, ref) => {
   return (
     <Sheet.Backdrop
       className={`SheetWithKeyboard-backdrop ${className ?? ""}`.trim()}
       themeColorDimming="auto"
-      {...props}
+      {...restProps}
       ref={ref}
     />
   );
 });
-SheetWithKeyboardBackdrop.displayName = "SheetWithKeyboardBackdrop";
+SheetWithKeyboardBackdrop.displayName = "SheetWithKeyboard.Backdrop";
 
-// ============================================================================
+// ================================================================================================
 // Content
-// ============================================================================
+// ================================================================================================
 
 const SheetWithKeyboardContent = React.forwardRef<
   React.ElementRef<typeof Sheet.Content>,
   React.ComponentPropsWithoutRef<typeof Sheet.Content>
->(({ className, children, ...props }, ref) => {
+>(({ children, className, ...restProps }, ref) => {
   return (
     <Sheet.Content
       className={`SheetWithKeyboard-content ${className ?? ""}`.trim()}
-      {...props}
+      {...restProps}
       ref={ref}
     >
       {children}
     </Sheet.Content>
   );
 });
-SheetWithKeyboardContent.displayName = "SheetWithKeyboardContent";
+SheetWithKeyboardContent.displayName = "SheetWithKeyboard.Content";
 
-// ============================================================================
+// ================================================================================================
 // Unchanged Components
-// ============================================================================
+// ================================================================================================
 
 const SheetWithKeyboardPortal = Sheet.Portal;
 const SheetWithKeyboardTrigger = Sheet.Trigger;
@@ -116,15 +136,15 @@ const SheetWithKeyboardOutlet = Sheet.Outlet;
 const SheetWithKeyboardTitle = Sheet.Title;
 const SheetWithKeyboardDescription = Sheet.Description;
 
-export {
-  SheetWithKeyboardRoot,
-  SheetWithKeyboardPortal,
-  SheetWithKeyboardView,
-  SheetWithKeyboardBackdrop,
-  SheetWithKeyboardContent,
-  SheetWithKeyboardTrigger,
-  SheetWithKeyboardHandle,
-  SheetWithKeyboardOutlet,
-  SheetWithKeyboardTitle,
-  SheetWithKeyboardDescription,
+export const SheetWithKeyboard = {
+  Root: SheetWithKeyboardRoot,
+  Portal: SheetWithKeyboardPortal,
+  View: SheetWithKeyboardView,
+  Backdrop: SheetWithKeyboardBackdrop,
+  Content: SheetWithKeyboardContent,
+  Trigger: SheetWithKeyboardTrigger,
+  Handle: SheetWithKeyboardHandle,
+  Outlet: SheetWithKeyboardOutlet,
+  Title: SheetWithKeyboardTitle,
+  Description: SheetWithKeyboardDescription,
 };

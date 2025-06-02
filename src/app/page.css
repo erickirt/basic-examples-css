@@ -1,16 +1,16 @@
 .Home-main {
   --topBar-height: 49px;
 
-  min-height: 100lvh;
+  /* SELF-LAYOUT */
+  min-height: 150svh;
 
   /* INNER-LAYOUT */
-  padding: var(--size-10);
-  padding-top: calc(
-    env(safe-area-inset-top) + var(--topBar-height) + var(--size-10)
-  );
-  padding-bottom: max(env(safe-area-inset-bottom), var(--size-10));
+  padding-inline: var(--size-10);
+  padding-top: calc(env(safe-area-inset-top) + var(--topBar-height) + var(--size-16));
+  padding-bottom: var(--size-18);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: clamp(80px, 15svw, 20svh);
   place-items: center;
   gap: var(--size-10);
 }

@@ -3,41 +3,42 @@ import React, { createContext, useContext } from "react";
 import {
   Sheet,
   SheetStack,
-  SheetViewProps,
   useClientMediaQuery,
-  VisuallyHidden,
   type SheetContentProps,
 } from "@silk-hq/components";
 import "./SheetWithStacking.css";
 
-// ============================================================================
+// ================================================================================================
 // Context
-// ============================================================================
+// ================================================================================================
 
 type SheetWithStackingContextValue = {
   travelStatus: string;
   setTravelStatus: (status: string) => void;
-  contentPlacement: "left" | "right" | "top" | "bottom";
+  contentPlacement: "right" | "bottom";
 };
 
-const SheetWithStackingContext =
-  createContext<SheetWithStackingContextValue | null>(null);
+const SheetWithStackingContext = createContext<SheetWithStackingContextValue | null>(null);
 
-// ============================================================================
-// Stack
-// ============================================================================
+// ================================================================================================
+// Stack Root
+// ================================================================================================
 
-const SheetWithStackingStack = React.forwardRef<
+const SheetWithStackingStackRoot = React.forwardRef<
   React.ElementRef<typeof SheetStack.Root>,
   React.ComponentPropsWithoutRef<typeof SheetStack.Root>
->((props, ref) => {
-  return <SheetStack.Root {...props} ref={ref} />;
+>(({ children, ...restProps }, ref) => {
+  return (
+    <SheetStack.Root {...restProps} ref={ref}>
+      {children}
+    </SheetStack.Root>
+  );
 });
-SheetWithStackingStack.displayName = "SheetWithStackingStack";
+SheetWithStackingStackRoot.displayName = "SheetWithStackingStack.Root";
 
-// ============================================================================
+// ================================================================================================
 // Root
-// ============================================================================
+// ================================================================================================
 
 type SheetRootProps = React.ComponentPropsWithoutRef<typeof Sheet.Root>;
 type SheetWithStackingRootProps = Omit<SheetRootProps, "license"> & {
@@ -47,7 +48,7 @@ type SheetWithStackingRootProps = Omit<SheetRootProps, "license"> & {
 const SheetWithStackingRoot = React.forwardRef<
   React.ElementRef<typeof Sheet.Root>,
   SheetWithStackingRootProps
->((props, ref) => {
+>(({ children, ...restProps }, ref) => {
   const [travelStatus, setTravelStatus] = React.useState("idleOutside");
   const largeViewport = useClientMediaQuery("(min-width: 700px)");
   const contentPlacement = largeViewport ? "right" : "bottom";
@@ -60,25 +61,22 @@ const SheetWithStackingRoot = React.forwardRef<
         contentPlacement,
       }}
     >
-      <Sheet.Root
-        license="commercial"
-        forComponent="closest"
-        {...props}
-        ref={ref}
-      />
+      <Sheet.Root license="commercial" forComponent="closest" {...restProps} ref={ref}>
+        {children}
+      </Sheet.Root>
     </SheetWithStackingContext.Provider>
   );
 });
-SheetWithStackingRoot.displayName = "SheetWithStackingRoot";
+SheetWithStackingRoot.displayName = "SheetWithStacking.Root";
 
-// ============================================================================
+// ================================================================================================
 // View
-// ============================================================================
+// ================================================================================================
 
 const SheetWithStackingView = React.forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<typeof Sheet.View>
->(({ className, children, ...props }, ref) => {
+>(({ children, className, ...restProps }, ref) => {
   const context = useContext(SheetWithStackingContext);
   if (!context)
     throw new Error(
@@ -88,49 +86,46 @@ const SheetWithStackingView = React.forwardRef<
 
   return (
     <Sheet.View
-      className={`SheetWithStacking-view contentPlacement-${contentPlacement} ${
-        className ?? ""
-      }`}
+      className={`SheetWithStacking-view contentPlacement-${contentPlacement} ${className ?? ""}`}
       contentPlacement={contentPlacement}
       nativeEdgeSwipePrevention={true}
       onTravelStatusChange={setTravelStatus}
-      {...props}
+      {...restProps}
       ref={ref}
     >
       {children}
     </Sheet.View>
   );
 });
-SheetWithStackingView.displayName = "SheetWithStackingView";
+SheetWithStackingView.displayName = "SheetWithStacking.View";
 
-// ============================================================================
+// ================================================================================================
 // Backdrop
-// ============================================================================
+// ================================================================================================
 
 const SheetWithStackingBackdrop = React.forwardRef<
   React.ElementRef<typeof Sheet.Backdrop>,
   React.ComponentPropsWithoutRef<typeof Sheet.Backdrop>
->(({ className, ...props }, ref) => {
+>((props, ref) => {
   return (
     <Sheet.Backdrop
-      travelAnimation={{ opacity: [0, 0.33] }}
+      travelAnimation={{ opacity: [0, 0.2] }}
       themeColorDimming="auto"
-      className={className}
       {...props}
       ref={ref}
     />
   );
 });
-SheetWithStackingBackdrop.displayName = "SheetWithStackingBackdrop";
+SheetWithStackingBackdrop.displayName = "SheetWithStacking.Backdrop";
 
-// ============================================================================
+// ================================================================================================
 // Content
-// ============================================================================
+// ================================================================================================
 
 const SheetWithStackingContent = React.forwardRef<
   React.ElementRef<typeof Sheet.Content>,
   React.ComponentPropsWithoutRef<typeof Sheet.Content>
->(({ className, children, ...props }, ref) => {
+>(({ children, className, stackingAnimation: stackingAnimationFromProps, ...restProps }, ref) => {
   const context = useContext(SheetWithStackingContext);
   if (!context)
     throw new Error(
@@ -148,6 +143,7 @@ const SheetWithStackingContent = React.forwardRef<
                 "calc(-12.5px + 2.5px *" + progress + ")",
           scale: [1, 0.933],
           transformOrigin: "0 50%",
+          ...stackingAnimationFromProps,
         }
       : {
           translateY: ({ progress }: { progress: number }) =>
@@ -157,6 +153,7 @@ const SheetWithStackingContent = React.forwardRef<
                 "calc(-12.5px + 2.5px *" + progress + ")",
           scale: [1, 0.933],
           transformOrigin: "50% 0",
+          ...stackingAnimationFromProps,
         };
 
   return (
@@ -165,32 +162,39 @@ const SheetWithStackingContent = React.forwardRef<
         className ?? ""
       }`}
       stackingAnimation={stackingAnimation}
-      {...props}
+      {...restProps}
       ref={ref}
     >
       <div className="SheetWithStacking-innerContent">{children}</div>
     </Sheet.Content>
   );
 });
-SheetWithStackingContent.displayName = "SheetWithStackingContent";
+SheetWithStackingContent.displayName = "SheetWithStacking.Content";
 
-// ============================================================================
+// ================================================================================================
 // Unchanged Components
-// ============================================================================
+// ================================================================================================
 
 const SheetWithStackingPortal = Sheet.Portal;
 const SheetWithStackingTrigger = Sheet.Trigger;
+const SheetWithStackingHandle = Sheet.Handle;
+const SheetWithStackingOutlet = Sheet.Outlet;
 const SheetWithStackingTitle = Sheet.Title;
 const SheetWithStackingDescription = Sheet.Description;
 
-export {
-  SheetWithStackingStack,
-  SheetWithStackingRoot,
-  SheetWithStackingView,
-  SheetWithStackingPortal,
-  SheetWithStackingBackdrop,
-  SheetWithStackingContent,
-  SheetWithStackingTrigger,
-  SheetWithStackingTitle,
-  SheetWithStackingDescription,
+export const SheetWithStackingStack = {
+  Root: SheetWithStackingStackRoot,
+};
+
+export const SheetWithStacking = {
+  Root: SheetWithStackingRoot,
+  View: SheetWithStackingView,
+  Portal: SheetWithStackingPortal,
+  Backdrop: SheetWithStackingBackdrop,
+  Content: SheetWithStackingContent,
+  Trigger: SheetWithStackingTrigger,
+  Handle: SheetWithStackingHandle,
+  Outlet: SheetWithStackingOutlet,
+  Title: SheetWithStackingTitle,
+  Description: SheetWithStackingDescription,
 };

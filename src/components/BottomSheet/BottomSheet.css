@@ -14,7 +14,21 @@
 
 .BottomSheet-bleedingBackground {
   /* APPEARANCE */
-  border-radius: var(--radius-7);
+  border-radius: 24px;
   background-color: white;
-  box-shadow: var(--shadow-4);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.BottomSheet-handle {
+  /* SELF-LAYOUT */
+  width: 50px;
+  height: 6px;
+
+  /* APPEARANCE */
+  border: 0;
+  border-radius: 9999px;
+  background-color: rgb(209, 213, 219);
+
+  /* INTERACTIVITY */
+  cursor: pointer;
 }

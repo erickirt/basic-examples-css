@@ -5,9 +5,9 @@
 }
 
 .Toast-view {
-  --padding-x: var(--size-6);
-  --padding-top: var(--size-6);
-  --padding-bottom: var(--size-15);
+  --padding-x: 0.75rem;
+  --padding-top: 0.75rem;
+  --padding-bottom: 2.75rem;
   --max-height: 90px;
   --contentHeight: calc(
     max(env(safe-area-inset-top, 0px), var(--padding-top)) + var(--max-height) +
@@ -16,8 +16,8 @@
 }
 @media (min-width: 1000px) {
   .Toast-view {
-    --padding-x: var(--size-7);
-    --padding-top: var(--size-7);
+    --padding-x: 0.875rem;
+    --padding-top: 0.875rem;
 
     /* SELF-LAYOUT */
     height: var(--contentHeight);
@@ -55,8 +55,8 @@
   max-height: var(--max-height);
 
   /* APPEARANCE */
-  box-shadow: var(--shadow-4);
-  border-radius: var(--radius-7);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border-radius: 24px;
   border: 1px solid rgb(240, 240, 240);
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: saturate(5) blur(20px);

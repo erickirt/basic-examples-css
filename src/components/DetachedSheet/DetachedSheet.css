@@ -19,8 +19,8 @@
   background-color: transparent;
 
   /* INNER-LAYOUT */
-  padding-inline: var(--size-4);
-  padding-block: 0 max(env(safe-area-inset-bottom, 0px), var(--size-4));
+  padding-inline: 0.375rem;
+  padding-block: max(env(safe-area-inset-bottom, 0px), 0.375rem);
 }
 
 .DetachedSheet-innerContent {
@@ -28,7 +28,21 @@
   height: 100%;
 
   /* APPEARANCE */
-  border-radius: var(--radius-8);
+  border-radius: 36px;
   background-color: white;
-  box-shadow: var(--shadow-4);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.DetachedSheet-handle {
+  /* SELF-LAYOUT */
+  width: 50px;
+  height: 6px;
+
+  /* APPEARANCE */
+  border: 0;
+  border-radius: 9999px;
+  background-color: rgb(209, 213, 219);
+
+  /* INTERACTIVITY */
+  cursor: pointer;
 }

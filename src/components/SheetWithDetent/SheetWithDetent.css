@@ -15,7 +15,7 @@
   max-width: 800px;
 
   /* APPEARANCE */
-  border-radius: var(--radius-7) var(--radius-7) 0 0;
+  border-radius: 24px 24px 0 0;
   overflow: hidden;
   background-color: white;
 }
@@ -25,7 +25,21 @@
     height: calc(100% - max(env(safe-area-inset-top), 5vh));
 
     /* APPEARANCE */
-    box-shadow: var(--shadow-4);
-    border-radius: var(--radius-7);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border-radius: 24px;
   }
+}
+
+.SheetWithDetent-handle {
+  /* SELF-LAYOUT */
+  width: 50px;
+  height: 6px;
+
+  /* APPEARANCE */
+  border: 0;
+  border-radius: 9999px;
+  background-color: rgb(209, 213, 219);
+
+  /* INTERACTIVITY */
+  cursor: pointer;
 }

@@ -3,73 +3,78 @@ import React from "react";
 import { Sheet } from "@silk-hq/components";
 import "./TopSheet.css";
 
-// ============================================================================
+// ================================================================================================
 // Root
-// ============================================================================
+// ================================================================================================
 
 type SheetRootProps = React.ComponentPropsWithoutRef<typeof Sheet.Root>;
 type TopSheetRootProps = Omit<SheetRootProps, "license"> & {
   license?: SheetRootProps["license"];
 };
 
-const TopSheetRoot = React.forwardRef<
-  React.ElementRef<typeof Sheet.Root>,
-  TopSheetRootProps
->((props, ref) => {
-  return <Sheet.Root license="commercial" {...props} ref={ref}></Sheet.Root>;
-});
-TopSheetRoot.displayName = "TopSheetRoot";
+const TopSheetRoot = React.forwardRef<React.ElementRef<typeof Sheet.Root>, TopSheetRootProps>(
+  ({ children, ...restProps }, ref) => {
+    return (
+      <Sheet.Root license="commercial" {...restProps} ref={ref}>
+        {children}
+      </Sheet.Root>
+    );
+  }
+);
+TopSheetRoot.displayName = "TopSheet.Root";
 
-// ============================================================================
+// ================================================================================================
 // View
-// ============================================================================
+// ================================================================================================
 
 const TopSheetView = React.forwardRef<
   React.ElementRef<typeof Sheet.View>,
   React.ComponentPropsWithoutRef<typeof Sheet.View>
->(({ className, ...props }, ref) => {
+>(({ children, className, ...restProps }, ref) => {
   return (
     <Sheet.View
       className={`TopSheet-view ${className ?? ""}`.trim()}
       contentPlacement="top"
       nativeEdgeSwipePrevention={true}
-      {...props}
+      {...restProps}
       ref={ref}
-    />
+    >
+      {children}
+    </Sheet.View>
   );
 });
-TopSheetView.displayName = "TopSheetView";
+TopSheetView.displayName = "TopSheet.View";
 
-// ============================================================================
+// ================================================================================================
 // Backdrop
-// ============================================================================
+// ================================================================================================
 
 const TopSheetBackdrop = React.forwardRef<
   React.ElementRef<typeof Sheet.Backdrop>,
   React.ComponentPropsWithoutRef<typeof Sheet.Backdrop>
->(({ className, ...props }, ref) => {
+>(({ className, ...restProps }, ref) => {
   return (
     <Sheet.Backdrop
       className={`TopSheet-backdrop ${className ?? ""}`.trim()}
-      {...props}
+      {...restProps}
       ref={ref}
     />
   );
 });
-TopSheetBackdrop.displayName = "TopSheetBackdrop";
+TopSheetBackdrop.displayName = "TopSheet.Backdrop";
 
-// ============================================================================
+// ================================================================================================
 // Content
-// ============================================================================
+// ================================================================================================
 
 const TopSheetContent = React.forwardRef<
   React.ElementRef<typeof Sheet.Content>,
   React.ComponentPropsWithoutRef<typeof Sheet.Content>
->(({ className, children, ...props }, ref) => {
+>(({ children, className, ...restProps }, ref) => {
   return (
     <Sheet.Content
       className={`TopSheet-content ${className ?? ""}`.trim()}
-      {...props}
+      {...restProps}
       ref={ref}
     >
       <Sheet.BleedingBackground className="TopSheet-bleedingBackground" />
@@ -77,11 +82,11 @@ const TopSheetContent = React.forwardRef<
     </Sheet.Content>
   );
 });
-TopSheetContent.displayName = "TopSheetContent";
+TopSheetContent.displayName = "TopSheet.Content";
 
-// ============================================================================
+// ================================================================================================
 // Unchanged Components
-// ============================================================================
+// ================================================================================================
 
 const TopSheetPortal = Sheet.Portal;
 const TopSheetTrigger = Sheet.Trigger;
@@ -90,15 +95,15 @@ const TopSheetOutlet = Sheet.Outlet;
 const TopSheetTitle = Sheet.Title;
 const TopSheetDescription = Sheet.Description;
 
-export {
-  TopSheetRoot,
-  TopSheetPortal,
-  TopSheetView,
-  TopSheetBackdrop,
-  TopSheetContent,
-  TopSheetTrigger,
-  TopSheetHandle,
-  TopSheetOutlet,
-  TopSheetTitle,
-  TopSheetDescription,
+export const TopSheet = {
+  Root: TopSheetRoot,
+  Portal: TopSheetPortal,
+  View: TopSheetView,
+  Backdrop: TopSheetBackdrop,
+  Content: TopSheetContent,
+  Trigger: TopSheetTrigger,
+  Handle: TopSheetHandle,
+  Outlet: TopSheetOutlet,
+  Title: TopSheetTitle,
+  Description: TopSheetDescription,
 };
